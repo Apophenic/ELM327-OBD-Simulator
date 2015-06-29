@@ -1,8 +1,6 @@
 import random
-
 from Response.BaseClasses.OBDResponse import OBDResponse
 from Utils import Switch
-
 
 class SecondaryAirStatus(OBDResponse):
 

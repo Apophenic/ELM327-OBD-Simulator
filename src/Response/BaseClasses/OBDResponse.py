@@ -27,6 +27,8 @@ class OBDResponse:
             if var is not None:
                 response += ' ' + var
 
+        response += ' ' + '>'  # ELM response termination byte
+
         return response
 
     @abc.abstractmethod

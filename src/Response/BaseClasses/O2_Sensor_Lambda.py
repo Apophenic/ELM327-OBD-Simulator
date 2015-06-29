@@ -1,5 +1,4 @@
 import abc
-
 import Utils
 from Response.BaseClasses.OBDResponse import OBDResponse
 

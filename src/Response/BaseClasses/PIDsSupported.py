@@ -1,8 +1,6 @@
 import abc
-
 import Utils
 from Response.BaseClasses.OBDResponse import OBDResponse
-
 
 class PIDsSupported(OBDResponse):
     __metaclass__ = abc.ABCMeta
