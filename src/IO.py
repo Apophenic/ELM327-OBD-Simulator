@@ -42,6 +42,7 @@ from Response.IntakeManifoldPressure import IntakeManifoldPressure
 from Response.MAFAirFlowRate import MAFAirFlowRate
 from Response.MaxValueMAF import MaxValueMAF
 from Response.MaxValues import MaxValues
+from Response.Mode04.ClearStoredDTCs import ClearStoredDTCs
 from Response.O2.AirFuelRatio import AirFuelRatio
 from Response.O2.Lambda.O2_Lambda import O2S8L
 from Response.O2.Lambda.O2_Lambda import O2S7L
@@ -71,8 +72,10 @@ from Response.O2.WideBand.O2_Wide import O2S4w
 from Response.O2.WideBand.O2_Wide import O2S3w
 from Response.O2.WideBand.O2_Wide import O2S2w
 from Response.O2.WideBand.O2_Wide import O2S1w
+from Response.OBDError import OBDError
 from Response.OBDStandards import OBDStandards
 from Response.PIDsSupported.PIDs import PIDsSupported1, PIDsSupported21, PIDsSupported41, PIDsSupported61
+from Response.Protocol.OBDProtocol import OBDProtocol
 from Response.SecondaryAirStatus import SecondaryAirStatus
 from Response.Temps.Temperatures import CoolantTemp, IntakeAirTemp, AmbientAirTemp, EngineOilTemp
 from Response.Throttle.Positions import ThrottlePositionA, ThrottleActuator, AcceleratorPositionF, AcceleratorPositionE, \
@@ -289,5 +292,11 @@ def readinputbytes(query):
             return VehicleEmissionsRequirements()
         elif case('01 60'):
             return PIDsSupported61()
+        ###
+        elif case('04'):
+            return ClearStoredDTCs()
+        ###
+        elif case('AT DP'):
+            return OBDProtocol()
         elif case():
-            return None
+            return OBDError()

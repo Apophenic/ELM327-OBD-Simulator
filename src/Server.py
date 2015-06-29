@@ -12,7 +12,7 @@ def startserver(address, port, startshell):
     that is connected to the server"""
     s = socket()
     s.bind((address, port))
-    s.listen(1)
+    s.listen(2)
 
     if startshell:
         subprocess.Popen([sys.executable, __dir + '\Shell.py', address, str(port)])
@@ -29,7 +29,4 @@ def startserver(address, port, startshell):
 
         response = IO.readinputbytes(data)
 
-        if response is None:
-            c.send(str.encode('ERROR'))
-        else:
-            c.send(str.encode(response.getresponse()))
+        c.send(str.encode(response.getresponse()))
