@@ -4,7 +4,7 @@ import os
 import subprocess
 from socket import socket
 
-__dir = os.path.dirname(os.path.abspath(__file__))
+__workingdir = os.path.dirname(os.path.abspath(__file__))
 
 def startserver(address, port, startshell):
     """Starts a simulator instance at the given address and port.
@@ -15,7 +15,7 @@ def startserver(address, port, startshell):
     s.listen(2)
 
     if startshell:
-        subprocess.Popen([sys.executable, __dir + '\Shell.py', address, str(port)])
+        subprocess.Popen([sys.executable, __workingdir + '\Shell.py', address, str(port)])
 
     c, addr = s.accept()
 
